@@ -15,6 +15,8 @@
 		22EEC60A1E0E8EB900CB287A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC6081E0E8EB900CB287A /* LaunchScreen.storyboard */; };
 		22EEC6151E0E8EB900CB287A /* TableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC6141E0E8EB900CB287A /* TableViewTests.swift */; };
 		22EEC6201E0E8EB900CB287A /* TableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC61F1E0E8EB900CB287A /* TableViewUITests.swift */; };
+		22EEC6391E0EB53200CB287A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC6371E0EB53200CB287A /* TableViewCell.swift */; };
+		22EEC63A1E0EB53200CB287A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC6381E0EB53200CB287A /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		22EEC61B1E0E8EB900CB287A /* TableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EEC61F1E0E8EB900CB287A /* TableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewUITests.swift; sourceTree = "<group>"; };
 		22EEC6211E0E8EB900CB287A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22EEC6371E0EB53200CB287A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		22EEC6381E0EB53200CB287A /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */,
 				22EEC5FE1E0E8EB900CB287A /* ViewController.swift */,
 				22EEC6001E0E8EB900CB287A /* Main.storyboard */,
+				22EEC6371E0EB53200CB287A /* TableViewCell.swift */,
+				22EEC6381E0EB53200CB287A /* TableViewCell.xib */,
 				22EEC6061E0E8EB900CB287A /* Assets.xcassets */,
 				22EEC6081E0E8EB900CB287A /* LaunchScreen.storyboard */,
 				22EEC60B1E0E8EB900CB287A /* Info.plist */,
@@ -239,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EEC60A1E0E8EB900CB287A /* LaunchScreen.storyboard in Resources */,
+				22EEC63A1E0EB53200CB287A /* TableViewCell.xib in Resources */,
 				22EEC6071E0E8EB900CB287A /* Assets.xcassets in Resources */,
 				22EEC6021E0E8EB900CB287A /* Main.storyboard in Resources */,
 			);
@@ -266,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EEC5FF1E0E8EB900CB287A /* ViewController.swift in Sources */,
+				22EEC6391E0EB53200CB287A /* TableViewCell.swift in Sources */,
 				22EEC6051E0E8EB900CB287A /* TableView.xcdatamodeld in Sources */,
 				22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */,
 			);
@@ -421,7 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = TableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.TableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = TableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.TableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

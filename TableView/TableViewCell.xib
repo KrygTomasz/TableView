@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="TableView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Iy-Ma-2cc">
+                        <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-sd-voT">
+                                <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RB5-5L-MqQ" userLabel="button1">
+                                        <rect key="frame" x="0.0" y="98.5" width="125.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFN-zb-u8U" userLabel="button2">
+                                        <rect key="frame" x="141.5" y="98.5" width="126" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-zX-WMR" userLabel="button3">
+                                        <rect key="frame" x="283.5" y="98.5" width="125.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YMT-sd-voT" firstAttribute="centerY" secondItem="3Iy-Ma-2cc" secondAttribute="centerY" id="LSS-gA-cBd"/>
+                            <constraint firstItem="YMT-sd-voT" firstAttribute="width" secondItem="3Iy-Ma-2cc" secondAttribute="width" id="lyQ-Gd-PB1"/>
+                            <constraint firstItem="YMT-sd-voT" firstAttribute="height" secondItem="3Iy-Ma-2cc" secondAttribute="height" id="qnK-Sk-zyf"/>
+                            <constraint firstItem="YMT-sd-voT" firstAttribute="centerX" secondItem="3Iy-Ma-2cc" secondAttribute="centerX" id="zv8-J8-2g5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BcM-SM-FF7"/>
+                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="TTx-8e-XCw"/>
+                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wq4-WQ-fUa"/>
+                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="vRK-ml-66J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button1" destination="RB5-5L-MqQ" id="1gC-Wz-c3F"/>
+                <outlet property="button2" destination="eFN-zb-u8U" id="7Dg-T0-BEm"/>
+                <outlet property="button3" destination="ETJ-zX-WMR" id="ab7-Gt-djc"/>
+            </connections>
+            <point key="canvasLocation" x="78.5" y="145.5"/>
+        </tableViewCell>
+    </objects>
+</document>
