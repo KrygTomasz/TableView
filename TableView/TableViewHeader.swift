@@ -13,6 +13,7 @@ class TableViewHeader: UITableViewCell {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var expandButton: UIButton!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,9 +26,26 @@ class TableViewHeader: UITableViewCell {
     }
     
     func setView(labelText: String) {
-        self.backgroundColor = UIColor.green
+        
+        //self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         labelName.text = labelText
+        labelName.textColor = UIColor.white
         expandButton.setImage(#imageLiteral(resourceName: "expandImg"), for: [])
+        expandButton.tintColor = UIColor.white
+        expandButton.addTarget(self, action: #selector(TableViewHeader.buttonClick), for: .touchUpInside)
+        
     }
+    
+    func buttonClick() {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            if let transformation = self.expandButton.imageView?.transform.rotated(by: CGFloat(M_PI)) {
+                self.expandButton.imageView?.transform = transformation
+            }
+        })
+        
+    }
+    
+    
     
 }

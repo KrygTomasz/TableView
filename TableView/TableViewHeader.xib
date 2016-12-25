@@ -19,7 +19,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdL-Px-fUE">
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvi-N5-pxh">
+                        <rect key="frame" x="0.0" y="-1" width="320" height="44"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rF3-qR-zZw">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <blurEffect style="dark"/>
+                    </visualEffectView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdL-Px-fUE">
                         <rect key="frame" x="8" y="0.0" width="42" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="lsM-XM-pPP"/>
@@ -34,16 +42,19 @@
                             <constraint firstAttribute="width" secondItem="ECV-on-md7" secondAttribute="height" multiplier="1:1" id="cRd-ce-FzW"/>
                             <constraint firstAttribute="height" constant="44" id="lSU-kl-jyT"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="rvi-N5-pxh" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="2V9-qw-9Bx"/>
                     <constraint firstItem="ECV-on-md7" firstAttribute="leading" secondItem="fdL-Px-fUE" secondAttribute="trailing" constant="226" id="2d5-r0-7lA"/>
                     <constraint firstAttribute="bottom" secondItem="fdL-Px-fUE" secondAttribute="bottom" id="AIP-sm-qKW"/>
+                    <constraint firstItem="rvi-N5-pxh" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="MfL-at-eaH"/>
+                    <constraint firstItem="rvi-N5-pxh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gey-iF-zLn"/>
                     <constraint firstItem="fdL-Px-fUE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lQ4-09-Pz5"/>
                     <constraint firstItem="fdL-Px-fUE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mIY-eg-pJr"/>
                     <constraint firstAttribute="bottom" secondItem="ECV-on-md7" secondAttribute="bottom" id="owq-NZ-vee"/>
                     <constraint firstAttribute="trailing" secondItem="ECV-on-md7" secondAttribute="trailing" id="uty-EA-DE1"/>
+                    <constraint firstItem="rvi-N5-pxh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="xC9-Yh-iMX"/>
                     <constraint firstItem="ECV-on-md7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ykY-0c-RvX"/>
                 </constraints>
             </tableViewCellContentView>

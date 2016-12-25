@@ -8,32 +8,70 @@
 
 import UIKit
 
-struct cellData {
+class Section {
     
-    let button1Text: String
-    let button2Text: String
-    let button3Text: String
+    var isExpanded: Bool = false
+    var rows = [Row]()
+    
+    init(numberOfRows: Int) {
+        for _ in 0..<numberOfRows {
+            rows.append(Row())
+        }
+    }
     
 }
+
+class Row {
+    
+    let button1Text: String = "button1"
+    let button2Text: String = "button2"
+    let button3Text: String = "button3"
+    
+}
+
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var arrayOfCells = [cellData]()
-    var numberOfSections = 14
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var tabBar: UITabBar!
+    
+    
+    var sections = [
+        Section(numberOfRows: 3),
+        Section(numberOfRows: 5),
+        Section(numberOfRows: 4),
+        Section(numberOfRows: 2)
+    ]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        setView()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func setView() {
+        setTableView()
+        setNavigationBar()
+        setTabBar()
+    }
+    
+    func setTableView() {
         
-        arrayOfCells = [
-            cellData(button1Text: "no 11", button2Text: "no 12", button3Text: "no 13"),
-            cellData(button1Text: "no 21", button2Text: "no 22", button3Text: "no 23")
-        ]
-        
+        self.tableView.backgroundColor = UIColor.black
         self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    func setNavigationBar() {
+        
+    }
+    
+    func setTabBar() {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,20 +79,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        // Overrides StatusBar color
+        return .lightContent
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections
+        return sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfCells.count
+        return sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as? TableViewCell {
-            cell.button1.setTitle(arrayOfCells[indexPath.row].button1Text, for: [])
-            cell.button2.setTitle(arrayOfCells[indexPath.row].button2Text, for: [])
-            cell.button3.setTitle(arrayOfCells[indexPath.row].button3Text, for: [])
+            cell.button1.setTitle(Row().button1Text, for: [])
+            cell.button2.setTitle(Row().button2Text, for: [])
+            cell.button3.setTitle(Row().button3Text, for: [])
             cell.setView()
             return cell
         } else {
@@ -79,7 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-
 
 }
 

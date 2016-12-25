@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,31 +15,30 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                <rect key="frame" x="0.0" y="0.0" width="409" height="226"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Iy-Ma-2cc">
-                        <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                        <rect key="frame" x="8" y="0.0" width="393" height="227"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-sd-voT">
-                                <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="227"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RB5-5L-MqQ" userLabel="button1">
-                                        <rect key="frame" x="0.0" y="98.5" width="125.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="98.5" width="120.5" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFN-zb-u8U" userLabel="button2">
-                                        <rect key="frame" x="141.5" y="98.5" width="126" height="30"/>
+                                        <rect key="frame" x="136.5" y="98.5" width="120" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-zX-WMR" userLabel="button3">
-                                        <rect key="frame" x="283.5" y="98.5" width="125.5" height="30"/>
+                                        <rect key="frame" x="272.5" y="98.5" width="120.5" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YMT-sd-voT" firstAttribute="centerY" secondItem="3Iy-Ma-2cc" secondAttribute="centerY" id="LSS-gA-cBd"/>
                             <constraint firstItem="YMT-sd-voT" firstAttribute="width" secondItem="3Iy-Ma-2cc" secondAttribute="width" id="lyQ-Gd-PB1"/>
@@ -49,10 +48,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BcM-SM-FF7"/>
                     <constraint firstItem="3Iy-Ma-2cc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="TTx-8e-XCw"/>
                     <constraint firstItem="3Iy-Ma-2cc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wq4-WQ-fUa"/>
-                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="vRK-ml-66J"/>
+                    <constraint firstAttribute="trailing" secondItem="3Iy-Ma-2cc" secondAttribute="trailing" constant="8" id="kju-Km-aSQ"/>
+                    <constraint firstItem="3Iy-Ma-2cc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="r7b-89-sFQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
