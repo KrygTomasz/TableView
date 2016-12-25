@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */; };
+		2233E3BD1E0FD520003B36DB /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */; };
 		22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */; };
 		22EEC5FF1E0E8EB900CB287A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5FE1E0E8EB900CB287A /* ViewController.swift */; };
 		22EEC6021E0E8EB900CB287A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC6001E0E8EB900CB287A /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
 		22EEC5F91E0E8EB900CB287A /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22EEC5FE1E0E8EB900CB287A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				22EEC6081E0E8EB900CB287A /* LaunchScreen.storyboard */,
 				22EEC60B1E0E8EB900CB287A /* Info.plist */,
 				22EEC6031E0E8EB900CB287A /* TableView.xcdatamodeld */,
+				2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */,
+				2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 			files = (
 				22EEC60A1E0E8EB900CB287A /* LaunchScreen.storyboard in Resources */,
 				22EEC63A1E0EB53200CB287A /* TableViewCell.xib in Resources */,
+				2233E3BD1E0FD520003B36DB /* TableViewHeader.xib in Resources */,
 				22EEC6071E0E8EB900CB287A /* Assets.xcassets in Resources */,
 				22EEC6021E0E8EB900CB287A /* Main.storyboard in Resources */,
 			);
@@ -274,6 +281,7 @@
 			files = (
 				22EEC5FF1E0E8EB900CB287A /* ViewController.swift in Sources */,
 				22EEC6391E0EB53200CB287A /* TableViewCell.swift in Sources */,
+				2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */,
 				22EEC6051E0E8EB900CB287A /* TableView.xcdatamodeld in Sources */,
 				22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */,
 			);
@@ -530,6 +538,7 @@
 				22EEC6261E0E8EB900CB287A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22EEC6271E0E8EB900CB287A /* Build configuration list for PBXNativeTarget "TableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +547,7 @@
 				22EEC6291E0E8EB900CB287A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22EEC62A1E0E8EB900CB287A /* Build configuration list for PBXNativeTarget "TableViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +556,7 @@
 				22EEC62C1E0E8EB900CB287A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

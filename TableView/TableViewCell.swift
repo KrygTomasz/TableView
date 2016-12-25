@@ -26,4 +26,10 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setView() {
+        button1.backgroundColor = UIColor.lightGray
+        button2.backgroundColor = UIColor.gray
+        button3.backgroundColor = UIColor.darkGray
+    }
+    
 }

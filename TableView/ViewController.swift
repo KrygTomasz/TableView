@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     var arrayOfCells = [cellData]()
-    var numberOfSections = 4
+    var numberOfSections = 14
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.button1.setTitle(arrayOfCells[indexPath.row].button1Text, for: [])
             cell.button2.setTitle(arrayOfCells[indexPath.row].button2Text, for: [])
             cell.button3.setTitle(arrayOfCells[indexPath.row].button3Text, for: [])
+            cell.setView()
             return cell
         } else {
             return UITableViewCell()
@@ -64,6 +65,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as? TableViewHeader {
+            header.setView(labelText: "Header")
+            return header
+        } else {
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 
 
