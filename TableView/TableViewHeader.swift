@@ -13,6 +13,7 @@ class TableViewHeader: UITableViewCell {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var expandButton: UIButton!
     
+    var onHeaderButtonClicked : (()->Void)!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,7 @@ class TableViewHeader: UITableViewCell {
     
     func buttonClick() {
         
+        onHeaderButtonClicked()
         UIView.animate(withDuration: 0.5, animations: {
             if let transformation = self.expandButton.imageView?.transform.rotated(by: CGFloat(M_PI)) {
                 self.expandButton.imageView?.transform = transformation

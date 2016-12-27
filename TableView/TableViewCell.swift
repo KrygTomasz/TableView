@@ -27,7 +27,7 @@ class TableViewCell: UITableViewCell {
     }
     
     func setView() {
-        self.contentView.backgroundColor = UIColor.black
+        self.contentView.backgroundColor = UIColor.darkGray
         button1.backgroundColor = UIColor.red
         button2.backgroundColor = UIColor.green
         button3.backgroundColor = UIColor.blue

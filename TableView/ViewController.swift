@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tabBar: UITabBar!
     
+    var currentExpandedSection: Int? = nil
     
     var sections = [
         Section(numberOfRows: 3),
@@ -59,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setTableView() {
         
-        self.tableView.backgroundColor = UIColor.black
+        self.tableView.backgroundColor = UIColor.darkGray
         self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -89,7 +90,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].rows.count
+        if sections[section].isExpanded {
+            return sections[section].rows.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,17 +116,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         if let header = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as? TableViewHeader {
-            header.setView(labelText: "Header")
+            
+            header.setView(labelText: "Header " + String(section))
+            
+            header.onHeaderButtonClicked = {
+                let previousExpandedSection = self.currentExpandedSection
+                let sectionObject = self.sections[section]
+                if sectionObject.isExpanded {
+                    sectionObject.isExpanded = false
+                    self.currentExpandedSection = nil
+                    self.tableView.reloadSections([section], with: .automatic)
+                } else {
+                    sectionObject.isExpanded = true
+                    self.currentExpandedSection = section
+                    if previousExpandedSection != nil {
+                        self.sections[previousExpandedSection!].isExpanded = false
+                        self.tableView.reloadSections([section, previousExpandedSection!], with: .automatic)
+                    } else {
+                        self.tableView.reloadSections([section], with: .automatic)
+                    }
+                }
+            }
             return header
+            
         } else {
             return UIView()
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    
 
 }
 
