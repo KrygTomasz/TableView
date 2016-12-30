@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewHeader: UITableViewCell {
+class TableViewHeader: UIView {
 
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var expandButton: UIButton!
@@ -19,34 +19,31 @@ class TableViewHeader: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func setView(labelText: String) {
+    func setView(labelText: String, isExpanded: Bool) {
         
-        //self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+        self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         labelName.text = labelText
         labelName.textColor = UIColor.white
         expandButton.setImage(#imageLiteral(resourceName: "expandImg"), for: [])
         expandButton.tintColor = UIColor.white
         expandButton.addTarget(self, action: #selector(TableViewHeader.buttonClick), for: .touchUpInside)
+        if isExpanded {
+            expandButton.rotate(by: CGFloat(M_PI))
+        }
         
     }
     
     func buttonClick() {
         
         onHeaderButtonClicked()
-        UIView.animate(withDuration: 0.5, animations: {
-            if let transformation = self.expandButton.imageView?.transform.rotated(by: CGFloat(M_PI)) {
-                self.expandButton.imageView?.transform = transformation
-            }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.expandButton.rotate(by: CGFloat(M_PI))
         })
         
     }
+    
+    
     
     
     

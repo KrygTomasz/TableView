@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */; };
 		2233E3BD1E0FD520003B36DB /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */; };
+		229D022D1E16E78E001F12F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D022C1E16E78E001F12F9 /* Extensions.swift */; };
 		22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */; };
 		22EEC5FF1E0E8EB900CB287A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5FE1E0E8EB900CB287A /* ViewController.swift */; };
 		22EEC6021E0E8EB900CB287A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC6001E0E8EB900CB287A /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		229D022C1E16E78E001F12F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22EEC5F91E0E8EB900CB287A /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22EEC5FE1E0E8EB900CB287A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				22EEC6031E0E8EB900CB287A /* TableView.xcdatamodeld */,
 				2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */,
 				2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */,
+				229D022C1E16E78E001F12F9 /* Extensions.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EEC5FF1E0E8EB900CB287A /* ViewController.swift in Sources */,
+				229D022D1E16E78E001F12F9 /* Extensions.swift in Sources */,
 				22EEC6391E0EB53200CB287A /* TableViewCell.swift in Sources */,
 				2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */,
 				22EEC6051E0E8EB900CB287A /* TableView.xcdatamodeld in Sources */,

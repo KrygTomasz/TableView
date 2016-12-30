@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if sections[section].isExpanded {
             return sections[section].rows.count
         } else {
-            return 1
+            return 0
         }
     }
     
@@ -119,7 +119,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let header = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as? TableViewHeader {
             
-            header.setView(labelText: "Header " + String(section))
+            header.setView(labelText: "Header " + String(section), isExpanded: sections[section].isExpanded)
             
             header.onHeaderButtonClicked = {
                 let previousExpandedSection = self.currentExpandedSection
@@ -127,7 +127,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if sectionObject.isExpanded {
                     sectionObject.isExpanded = false
                     self.currentExpandedSection = nil
+                    self.tableView.beginUpdates()
                     self.tableView.reloadSections([section], with: .automatic)
+                    self.tableView.endUpdates()
                 } else {
                     sectionObject.isExpanded = true
                     self.currentExpandedSection = section
@@ -148,7 +150,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 60
     }
     
     
