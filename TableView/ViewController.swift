@@ -33,7 +33,6 @@ class Row {
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tabBar: UITabBar!
     
     var currentExpandedSection: Int? = nil
