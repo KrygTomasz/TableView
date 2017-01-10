@@ -25,6 +25,7 @@ class TableViewHeader: UIView {
         self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         labelName.text = labelText
         labelName.textColor = UIColor.white
+        
         expandButton.setImage(#imageLiteral(resourceName: "expandImg"), for: [])
         expandButton.tintColor = UIColor.white
         expandButton.addTarget(self, action: #selector(TableViewHeader.buttonClick), for: .touchUpInside)

@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var addHeaderButton: UIBarButtonItem!
     
     var currentExpandedSection: Int? = nil
     
@@ -45,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ]
     
     override func viewDidLoad() {
-        
+        sections.append(Section(numberOfRows: 10))
         super.viewDidLoad()
         setView()
         // Do any additional setup after loading the view, typically from a nib.
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         setTableView()
         setNavigationBar()
         setTabBar()
+        setButton()
     }
     
     func setTableView() {
@@ -73,6 +75,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setTabBar() {
         
     }
+    
+    func setButton() {
+        addHeaderButton.title = "Add header"
+        addHeaderButton.target = self
+        addHeaderButton.action = #selector(headerButtonClick)
+    }
+    
+    func headerButtonClick() {
+        let alert = UIAlertController(title: "Add Header", message: "Type new header name", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
+        
+            let headerName = alert.textFields?.first
+            
+            self.addSection(Section(numberOfRows: 3))
+        
+        
+        })
+        
+        alert.addAction(saveAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func addSection(_ section: Section) {
+        sections.append(section)
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,11 +119,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if sections[section].isExpanded {
             return sections[section].rows.count
         } else {
             return 0
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

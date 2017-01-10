@@ -83,6 +83,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addHeaderButton" destination="YPD-Ve-mKX" id="nwb-lH-nzo"/>
                         <outlet property="tabBar" destination="GAj-PC-gcz" id="NhM-OH-h5I"/>
                         <outlet property="tableView" destination="Ohc-ZO-p7Y" id="aiC-5J-57t"/>
                     </connections>
