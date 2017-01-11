@@ -10,10 +10,12 @@ import UIKit
 
 class Section {
     
+    var name: String = ""
     var isExpanded: Bool = false
     var rows = [Row]()
     
-    init(numberOfRows: Int) {
+    init(_ name: String, numberOfRows: Int) {
+        self.name = name
         for _ in 0..<numberOfRows {
             rows.append(Row())
         }
@@ -39,14 +41,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var currentExpandedSection: Int? = nil
     
     var sections = [
-        Section(numberOfRows: 3),
-        Section(numberOfRows: 5),
-        Section(numberOfRows: 4),
-        Section(numberOfRows: 2)
+        Section("Header 0", numberOfRows: 3),
+        Section("Header 1", numberOfRows: 5),
+        Section("Header 2", numberOfRows: 4),
+        Section("Header 3", numberOfRows: 2)
     ]
     
     override func viewDidLoad() {
-        sections.append(Section(numberOfRows: 10))
         super.viewDidLoad()
         setView()
         // Do any additional setup after loading the view, typically from a nib.
@@ -83,20 +84,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func headerButtonClick() {
+        
+        showDialog()
+        
+    }
+    
+    fileprivate func showDialog() {
+        
         let alert = UIAlertController(title: "Add Header", message: "Type new header name", preferredStyle: .alert)
         
+        alert.addTextField(configurationHandler: nil)
+        
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
-        
-            let headerName = alert.textFields?.first
             
-            self.addSection(Section(numberOfRows: 3))
-        
-        
+            if let headerName: String = alert.textFields?.first?.text {
+                self.addSection(Section(headerName, numberOfRows: 3))
+            }
+            
+            
         })
         
         alert.addAction(saveAction)
         
         present(alert, animated: true, completion: nil)
+        
     }
     
     func addSection(_ section: Section) {
@@ -150,7 +161,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let header = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as? TableViewHeader {
             
-            header.setView(labelText: "Header " + String(section), isExpanded: sections[section].isExpanded)
+            header.setView(labelText: sections[section].name, isExpanded: sections[section].isExpanded)
             
             header.onHeaderButtonClicked = {
                 let previousExpandedSection = self.currentExpandedSection
