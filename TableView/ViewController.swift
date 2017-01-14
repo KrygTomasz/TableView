@@ -24,9 +24,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Section("Header 3", numberOfRows: 2)
     ]
     
+    var longPressGesture: UILongPressGestureRecognizer!
+    var sourceIndexPath: IndexPath? = nil
+    var snapshot: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(sender: )))
+        tableView.addGestureRecognizer(longPressGesture)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -91,6 +97,99 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         sections.append(section)
         tableView.reloadData()
     }
+    
+    func longPress(sender: UILongPressGestureRecognizer) {
+        
+        let longPressGesture: UILongPressGestureRecognizer = sender
+        let gestureState: UIGestureRecognizerState = longPressGesture.state
+        let currentLocation: CGPoint = longPressGesture.location(in: self.tableView)
+        let currentIndexPath: IndexPath? = tableView.indexPathForRow(at: currentLocation)
+        print("Long Press \(currentIndexPath?.row)")
+        print(currentLocation)
+        
+        switch(gestureState) {
+        case .began:
+            if (currentIndexPath != nil) {
+                sourceIndexPath = currentIndexPath
+                guard let tappedCell = tableView.cellForRow(at: sourceIndexPath!) else {break}
+                snapshot = customSnapshot(for: tappedCell)
+                var cellCenter: CGPoint = tappedCell.center
+                snapshot?.center = cellCenter
+                snapshot?.alpha = 0
+                tableView.addSubview(snapshot)
+                UIView.animate(withDuration: 0.25, animations: {
+                    cellCenter.y = currentLocation.y
+                    self.snapshot.center = cellCenter
+                    //transform?
+                    self.snapshot.alpha = 0.5
+                    
+                    tappedCell.alpha = 0
+                }, completion: {
+                    finished in
+                    tappedCell.isHidden = true
+                })
+            }
+            break
+        case .changed:
+            var currentCenter: CGPoint = snapshot.center
+            currentCenter.y = currentLocation.y
+            snapshot.center = currentCenter
+            
+            if (currentIndexPath != nil && currentIndexPath != sourceIndexPath) {
+                if let section: Int = currentIndexPath?.section, let currentRowIndex: Int = currentIndexPath?.row {
+                    if let sourceRowIndex = sourceIndexPath?.row {
+                        let clickedRow: Row = sections[section].rows[sourceRowIndex]
+                        sections[section].rows.remove(at: sourceRowIndex)
+                        sections[section].rows.insert(clickedRow, at: currentRowIndex)
+                        sourceIndexPath = currentIndexPath
+                        tableView.reloadRows(at: [currentIndexPath!], with: .automatic)
+                    }
+                }
+            }
+            break
+        default:
+            guard let sourceIndexPathTmp = sourceIndexPath else {
+                return
+            }
+            guard let cell = tableView.cellForRow(at: sourceIndexPathTmp) else {
+                return
+            }
+            cell.isHidden = false
+            cell.alpha = 0.0
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.snapshot?.center = cell.center
+                //self.snapshot?.transform = CGAffineTransformIdentity
+                self.snapshot?.alpha = 0.0
+                
+                cell.alpha = 1.0
+            }, completion: { _ in
+                self.sourceIndexPath = nil
+                self.snapshot?.removeFromSuperview()
+                self.snapshot = nil
+            })
+            tableView.reloadData()
+            break
+        }
+        
+    }
+    
+    func customSnapshot(for view: UIView)->UIView {
+            // Make an image from the input view.
+            UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
+            view.layer.render(in: UIGraphicsGetCurrentContext()!)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            let snapshot = UIImageView(image: image)
+            snapshot.layer.masksToBounds = false
+            snapshot.layer.cornerRadius = 0.0
+            snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+            snapshot.layer.shadowRadius = 5.0
+            snapshot.layer.shadowOpacity = 0.4
+            
+            return snapshot
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -119,9 +218,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as? TableViewCell {
-            cell.button1.setTitle(Row().button1Text, for: [])
-            cell.button2.setTitle(Row().button2Text, for: [])
-            cell.button3.setTitle(Row().button3Text, for: [])
             cell.setView()
             return cell
         } else {
@@ -172,42 +268,75 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 60
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let footer = Bundle.main.loadNibNamed("TableViewFooter", owner: self, options: nil)?.first as? TableViewFooter {
-            
-            footer.setView()
-            
-            footer.onFooterButtonClicked = {
-                
-                self.sections[section].addRow(Row())
-                self.tableView.reloadSections([section], with: .fade)
-                
-            }
-            
-            return footer
-            
-        } else {
-            return UIView()
-        }
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        if let footer = Bundle.main.loadNibNamed("TableViewFooter", owner: self, options: nil)?.first as? TableViewFooter {
+//            
+//            footer.setView()
+//            
+//            footer.onFooterButtonClicked = {
+//                
+//                self.sections[section].addRow(Row())
+//                self.tableView.reloadSections([section], with: .fade)
+//                
+//            }
+//            
+//            return footer
+//            
+//        } else {
+//            return UIView()
+//        }
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if sections[section].isExpanded {
+//            return 60
+//        } else {
+//            return 0
+//        }
+//    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if sections[section].isExpanded {
-            return 60
-        } else {
-            return 0
-        }
-    }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete", handler: {
+            action, index in
+            self.sections[indexPath.section].rows.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        })
+        let edit = UITableViewRowAction(style: .normal, title: "Edit", handler: {
+            action, index in
+            self.sections[indexPath.section].rows.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        })
+        delete.backgroundColor = UIColor.red
+        edit.backgroundColor = UIColor.blue
+        return [delete, edit]
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedRow = sections[sourceIndexPath.section].rows[sourceIndexPath.row]
+        sections[sourceIndexPath.section].rows.remove(at: sourceIndexPath.row)
+        sections[sourceIndexPath.section].rows.insert(movedRow, at: destinationIndexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
+            tableView.beginUpdates()
             sections[indexPath.section].rows.remove(at: indexPath.row)
-                        tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            tableView.endUpdates()
+            //tableView.reloadData()
+        } else if (editingStyle == .insert){
+            tableView.beginUpdates()
             tableView.endUpdates()
         }
         //tableView.beginUpdates()
