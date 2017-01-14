@@ -21,8 +21,8 @@ class TableViewHeader: UIView {
     }
     
     func setView(labelText: String, isExpanded: Bool) {
-        
-        self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+
+        self.backgroundColor = UIColor.transparent(alpha: 0.5)
         labelName.text = labelText
         labelName.textColor = UIColor.white
         

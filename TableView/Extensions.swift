@@ -9,9 +9,20 @@
 import UIKit
 
 extension UIButton {
+    
     func rotate(by angle: CGFloat) {
         if let transformation = self.imageView?.transform.rotated(by: angle) {
             self.imageView?.transform = transformation
         }
     }
+    
+}
+
+
+extension UIColor {
+    
+    static func transparent(alpha: CGFloat)->UIColor {
+        return UIColor.init(red: 0, green: 0, blue: 0, alpha: alpha)
+    }
+    
 }

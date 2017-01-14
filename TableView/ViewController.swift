@@ -8,29 +8,6 @@
 
 import UIKit
 
-class Section {
-    
-    var name: String = ""
-    var isExpanded: Bool = false
-    var rows = [Row]()
-    
-    init(_ name: String, numberOfRows: Int) {
-        self.name = name
-        for _ in 0..<numberOfRows {
-            rows.append(Row())
-        }
-    }
-    
-}
-
-class Row {
-    
-    let button1Text: String = "button1"
-    let button2Text: String = "button2"
-    let button3Text: String = "button3"
-    
-}
-
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -193,6 +170,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let footer = Bundle.main.loadNibNamed("TableViewFooter", owner: self, options: nil)?.first as? TableViewFooter {
+            
+            footer.setView()
+            
+            footer.onFooterButtonClicked = {
+                
+                self.sections[section].addRow(Row())
+                self.tableView.reloadSections([section], with: .fade)
+                
+            }
+            
+            return footer
+            
+        } else {
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if sections[section].isExpanded {
+            return 60
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            sections[indexPath.section].rows.remove(at: indexPath.row)
+                        tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+        //tableView.beginUpdates()
+        //tableView.reloadRows(at: [indexPath], with: .automatic)
+        //tableView.endUpdates()
     }
     
     
