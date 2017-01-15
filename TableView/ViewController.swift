@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var longPressGesture: UILongPressGestureRecognizer!
     var sourceIndexPath: IndexPath? = nil
-    var cellSnapshot: UIView!
+    var cellSnapshot: Snapshot!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +102,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let longPressGesture: UILongPressGestureRecognizer = sender
         let gestureState: UIGestureRecognizerState = longPressGesture.state
         let currentLocation: CGPoint = longPressGesture.location(in: self.tableView)
-        //print("Long Press \(currentIndexPath?.row)")
         print(currentLocation)
         
         switch(gestureState) {
@@ -128,12 +127,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cellSnapshot = tappedCell.getSnapshot()
             var cellCenter: CGPoint = tappedCell.center
             cellSnapshot?.center = cellCenter
-            cellSnapshot?.alpha = 0
             tableView.addSubview(cellSnapshot)
             UIView.animate(withDuration: 0.25, animations: {
                 cellCenter.y = location.y
                 self.cellSnapshot.center = cellCenter
-                self.cellSnapshot.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                self.cellSnapshot.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 self.cellSnapshot.alpha = 0.8
                 
                 tappedCell.alpha = 0
@@ -146,7 +144,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     fileprivate func moveTappedCell(to newLocation: CGPoint) {
         
-        moveSnapshot(to: newLocation)
+        moveSnapshotOnY(to: newLocation)
         
         let newIndexPath: IndexPath? = tableView.indexPathForRow(at: newLocation)
         if (newIndexPath != nil && newIndexPath != sourceIndexPath) {
@@ -165,7 +163,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    fileprivate func moveSnapshot(to newLocation: CGPoint) {
+    fileprivate func moveSnapshotOnY(to newLocation: CGPoint) {
         guard var currentCenter: CGPoint = cellSnapshot?.center else { return }
         currentCenter.y = newLocation.y
         cellSnapshot.center = currentCenter
@@ -183,18 +181,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.cellSnapshot?.transform = CGAffineTransform.identity
             
         }, completion: { _ in
-            UIView.animate(withDuration: 0.05, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 currentCell.alpha = 1.0
             }, completion: {_ in
                 self.sourceIndexPath = nil
                 self.cellSnapshot?.removeFromSuperview()
                 self.cellSnapshot = nil
+                self.tableView.reloadData()
             })
-            self.tableView.reloadData()
             
         })
         
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
