@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TableView
+
+  Created by Kryg Tomasz on 15.01.2017.
+  Copyright © 2017 Kryg Tomek. All rights reserved.
+*/
+
+
+SAVE = "Save";
+ADD_HEADER_TITLE = "New section";
+ADD_HEADER_DESCRIPTION = "Type new section name";

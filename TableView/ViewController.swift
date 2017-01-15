@@ -63,9 +63,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func setButton() {
-        addHeaderButton.title = "Add header"
-        addHeaderButton.target = self
-        addHeaderButton.action = #selector(headerButtonClick)
+
+        let barButton = //UIBarButtonItem(image: #imageLiteral(resourceName: "add"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(headerButtonClick))
+            UIBarButtonItem.itemWith(image: #imageLiteral(resourceName: "add"), tintColor: Colors.main,target: self, action: #selector(headerButtonClick))
+        self.navigationItem.rightBarButtonItem = barButton
+        
     }
     
     func headerButtonClick() {
@@ -76,11 +78,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     fileprivate func showDialog() {
         
-        let alert = UIAlertController(title: "Add Header", message: "Type new header name", preferredStyle: .alert)
+        let alert = UIAlertController(title: Localized.addHeaderTitle.localize, message: Localized.addHeaderDescription.localize, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: nil)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
+        let saveAction = UIAlertAction(title: NSLocalizedString(Localized.save.localize, comment: "string"), style: .default, handler: {(action: UIAlertAction) -> Void in
             if let headerName: String = alert.textFields?.first?.text {
                 self.addSection(Section(headerName, numberOfRows: 3))
             }
