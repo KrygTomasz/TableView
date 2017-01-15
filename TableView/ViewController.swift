@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var longPressGesture: UILongPressGestureRecognizer!
     var sourceIndexPath: IndexPath? = nil
-    var snapshot: UIView!
+    var cellSnapshot: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setTableView() {
         
-        self.tableView.backgroundColor = UIColor.darkGray
+        self.tableView.backgroundColor = Colors.background
         self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -53,6 +53,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func setNavigationBar() {
+        
+        navigationItem.rightBarButtonItem?.tintColor = Colors.main
         
     }
     
@@ -79,12 +81,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addTextField(configurationHandler: nil)
         
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
-            
             if let headerName: String = alert.textFields?.first?.text {
                 self.addSection(Section(headerName, numberOfRows: 3))
             }
-            
-            
         })
         
         alert.addAction(saveAction)
@@ -93,7 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func addSection(_ section: Section) {
+    fileprivate func addSection(_ section: Section) {
         sections.append(section)
         tableView.reloadData()
     }
@@ -103,93 +102,99 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let longPressGesture: UILongPressGestureRecognizer = sender
         let gestureState: UIGestureRecognizerState = longPressGesture.state
         let currentLocation: CGPoint = longPressGesture.location(in: self.tableView)
-        let currentIndexPath: IndexPath? = tableView.indexPathForRow(at: currentLocation)
-        print("Long Press \(currentIndexPath?.row)")
+        //print("Long Press \(currentIndexPath?.row)")
         print(currentLocation)
         
         switch(gestureState) {
         case .began:
-            if (currentIndexPath != nil) {
-                sourceIndexPath = currentIndexPath
-                guard let tappedCell = tableView.cellForRow(at: sourceIndexPath!) else {break}
-                snapshot = customSnapshot(for: tappedCell)
-                var cellCenter: CGPoint = tappedCell.center
-                snapshot?.center = cellCenter
-                snapshot?.alpha = 0
-                tableView.addSubview(snapshot)
-                UIView.animate(withDuration: 0.25, animations: {
-                    cellCenter.y = currentLocation.y
-                    self.snapshot.center = cellCenter
-                    //transform?
-                    self.snapshot.alpha = 0.5
-                    
-                    tappedCell.alpha = 0
-                }, completion: {
-                    finished in
-                    tappedCell.isHidden = true
-                })
-            }
+            popTappedCell(on: currentLocation)
             break
         case .changed:
-            var currentCenter: CGPoint = snapshot.center
-            currentCenter.y = currentLocation.y
-            snapshot.center = currentCenter
-            
-            if (currentIndexPath != nil && currentIndexPath != sourceIndexPath) {
-                if let section: Int = currentIndexPath?.section, let currentRowIndex: Int = currentIndexPath?.row {
-                    if let sourceRowIndex = sourceIndexPath?.row {
-                        let clickedRow: Row = sections[section].rows[sourceRowIndex]
-                        sections[section].rows.remove(at: sourceRowIndex)
-                        sections[section].rows.insert(clickedRow, at: currentRowIndex)
-                        sourceIndexPath = currentIndexPath
-                        tableView.reloadRows(at: [currentIndexPath!], with: .automatic)
-                    }
-                }
-            }
+            moveTappedCell(to: currentLocation)
             break
         default:
-            guard let sourceIndexPathTmp = sourceIndexPath else {
-                return
-            }
-            guard let cell = tableView.cellForRow(at: sourceIndexPathTmp) else {
-                return
-            }
-            cell.isHidden = false
-            cell.alpha = 0.0
-            
-            UIView.animate(withDuration: 0.25, animations: {
-                self.snapshot?.center = cell.center
-                //self.snapshot?.transform = CGAffineTransformIdentity
-                self.snapshot?.alpha = 0.0
-                
-                cell.alpha = 1.0
-            }, completion: { _ in
-                self.sourceIndexPath = nil
-                self.snapshot?.removeFromSuperview()
-                self.snapshot = nil
-            })
-            tableView.reloadData()
+            placeTappedCell()
             break
         }
         
     }
     
-    func customSnapshot(for view: UIView)->UIView {
-            // Make an image from the input view.
-            UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
-            view.layer.render(in: UIGraphicsGetCurrentContext()!)
-            let image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
+    fileprivate func popTappedCell(on location: CGPoint) {
+        
+        if let newIndexPath: IndexPath = tableView.indexPathForRow(at: location) {
+            sourceIndexPath = newIndexPath
             
-            let snapshot = UIImageView(image: image)
-            snapshot.layer.masksToBounds = false
-            snapshot.layer.cornerRadius = 0.0
-            snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-            snapshot.layer.shadowRadius = 5.0
-            snapshot.layer.shadowOpacity = 0.4
-            
-            return snapshot
+            guard let tappedCell = tableView.cellForRow(at: sourceIndexPath!) else { return }
+            cellSnapshot = tappedCell.getSnapshot()
+            var cellCenter: CGPoint = tappedCell.center
+            cellSnapshot?.center = cellCenter
+            cellSnapshot?.alpha = 0
+            tableView.addSubview(cellSnapshot)
+            UIView.animate(withDuration: 0.25, animations: {
+                cellCenter.y = location.y
+                self.cellSnapshot.center = cellCenter
+                self.cellSnapshot.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                self.cellSnapshot.alpha = 0.8
+                
+                tappedCell.alpha = 0
+            }, completion: { _ in
+                tappedCell.isHidden = true
+            })
         }
+        
+    }
+    
+    fileprivate func moveTappedCell(to newLocation: CGPoint) {
+        
+        moveSnapshot(to: newLocation)
+        
+        let newIndexPath: IndexPath? = tableView.indexPathForRow(at: newLocation)
+        if (newIndexPath != nil && newIndexPath != sourceIndexPath) {
+            if let section: Int = newIndexPath?.section, let newRowIndex: Int = newIndexPath?.row {
+                if let sourceRowIndex = sourceIndexPath?.row {
+                    let clickedRow: Row = sections[section].rows[sourceRowIndex]
+                    sections[section].rows.remove(at: sourceRowIndex)
+                    sections[section].rows.insert(clickedRow, at: newRowIndex)
+                    guard let tempSourceIndexPath: IndexPath = sourceIndexPath else { return }
+                    guard let tempCurrentIndexPath: IndexPath = newIndexPath else { return }
+                    tableView.moveRow(at: tempSourceIndexPath, to: tempCurrentIndexPath)
+                    sourceIndexPath = newIndexPath
+                }
+            }
+        }
+        
+    }
+    
+    fileprivate func moveSnapshot(to newLocation: CGPoint) {
+        guard var currentCenter: CGPoint = cellSnapshot?.center else { return }
+        currentCenter.y = newLocation.y
+        cellSnapshot.center = currentCenter
+    }
+    
+    fileprivate func placeTappedCell() {
+        
+        guard let destinationIndexPath = sourceIndexPath else { return }
+        guard let currentCell = tableView.cellForRow(at: destinationIndexPath) else { return }
+        currentCell.isHidden = false
+        currentCell.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.cellSnapshot?.center = currentCell.center
+            self.cellSnapshot?.transform = CGAffineTransform.identity
+            
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.05, animations: {
+                currentCell.alpha = 1.0
+            }, completion: {_ in
+                self.sourceIndexPath = nil
+                self.cellSnapshot?.removeFromSuperview()
+                self.cellSnapshot = nil
+            })
+            self.tableView.reloadData()
+            
+        })
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -201,10 +206,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return .lightContent
     }
     
+    
+    
+    //MARK: - tableView delegates
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if sections[section].isExpanded {

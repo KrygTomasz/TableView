@@ -24,10 +24,10 @@ class TableViewHeader: UIView {
 
         self.backgroundColor = UIColor.transparent(alpha: 0.5)
         labelName.text = labelText
-        labelName.textColor = UIColor.white
+        labelName.textColor = Colors.main
         
         expandButton.setImage(#imageLiteral(resourceName: "expandImg"), for: [])
-        expandButton.tintColor = UIColor.white
+        expandButton.tintColor = Colors.main
         expandButton.addTarget(self, action: #selector(TableViewHeader.buttonClick), for: .touchUpInside)
         if isExpanded {
             expandButton.rotate(by: CGFloat(M_PI))

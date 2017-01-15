@@ -26,3 +26,28 @@ extension UIColor {
     }
     
 }
+
+
+extension UIView {
+    
+    func getSnapshot()->UIView {
+        // Make an image from the input view.
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
+        guard let currentContext: CGContext = UIGraphicsGetCurrentContext() else {
+            return UIView()
+        }
+        self.layer.render(in: currentContext)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let snapshot = UIImageView(image: image)
+        snapshot.layer.masksToBounds = false
+        snapshot.layer.cornerRadius = 0.0
+        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        snapshot.layer.shadowRadius = 5.0
+        snapshot.layer.shadowOpacity = 0.4
+        
+        return snapshot
+    }
+    
+}

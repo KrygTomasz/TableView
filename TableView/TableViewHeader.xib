@@ -24,7 +24,7 @@
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-RB-QYf">
-                    <rect key="frame" x="0.0" y="0.0" width="307" height="60"/>
+                    <rect key="frame" x="16" y="0.0" width="291" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                 <constraint firstItem="opI-MQ-QfP" firstAttribute="leading" secondItem="oi5-RB-QYf" secondAttribute="trailing" constant="8" id="kL0-zW-RzT"/>
                 <constraint firstItem="oi5-RB-QYf" firstAttribute="top" secondItem="YaH-Zs-4gz" secondAttribute="top" id="lZH-8R-nBj"/>
                 <constraint firstAttribute="trailing" secondItem="opI-MQ-QfP" secondAttribute="trailing" id="tLR-B1-3RY"/>
-                <constraint firstItem="oi5-RB-QYf" firstAttribute="leading" secondItem="YaH-Zs-4gz" secondAttribute="leading" id="wfZ-WP-cdG"/>
+                <constraint firstItem="oi5-RB-QYf" firstAttribute="leading" secondItem="YaH-Zs-4gz" secondAttribute="leading" constant="16" id="wfZ-WP-cdG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

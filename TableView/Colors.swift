@@ -10,6 +10,7 @@ import UIKit
 
 class Colors {
     
-    static var background: UIColor =  UIColor.darkGray
+    static var main: UIColor =  UIColor.init(red: 1, green: 0.85, blue: 0.25, alpha: 1)
+    static var background: UIColor =  UIColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     
 }
