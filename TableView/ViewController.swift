@@ -45,7 +45,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setTableView() {
         
+        self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = Colors.background
+        self.tableView.separatorColor = Colors.main
         self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -248,7 +250,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 50.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

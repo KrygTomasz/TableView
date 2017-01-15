@@ -11,14 +11,10 @@ import Foundation
 
 class Row {
     
-    var button1Text: String = "button1"
-    var button2Text: String = "button2"
-    var button3Text: String = "button3"
+    var labelText: String
     
     init(title: String) {
-        button1Text = title
-        button2Text = title
-        button3Text = title
+        labelText = title
     }
     
 }

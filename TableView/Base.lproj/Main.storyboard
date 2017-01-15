@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xcu-Oe-V9D">
-    <device id="retina3_5" orientation="landscape">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAj-PC-gcz">
-                                <rect key="frame" x="0.0" y="271" width="480" height="49"/>
+                                <rect key="frame" x="0.0" y="687" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="uba-47-TcG"/>
@@ -34,21 +34,12 @@
                                 </items>
                             </tabBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azp-ee-OwH">
-                                <rect key="frame" x="0.0" y="64" width="480" height="207"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-ZO-p7Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="207"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-ZO-p7Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="qpf-Er-pB2">
-                                                <rect key="frame" x="0.0" y="28" width="480" height="55"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpf-Er-pB2" id="j7s-yr-rlL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="55"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
+                                        <sections/>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="BH2-1w-feP"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="nhJ-3e-uZv"/>
@@ -78,9 +69,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TableView" id="rZ8-9y-6pP">
-                        <barButtonItem key="rightBarButtonItem" image="add" id="YPD-Ve-mKX">
-                            <color key="tintColor" red="1" green="0.87013371758801716" blue="0.27372781225332432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="YPD-Ve-mKX"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addHeaderButton" destination="YPD-Ve-mKX" id="nwb-lH-nzo"/>
@@ -97,7 +86,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xcu-Oe-V9D" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qoe-C4-hAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qoe-C4-hAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -111,7 +100,4 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="add" width="100" height="100"/>
-    </resources>
 </document>

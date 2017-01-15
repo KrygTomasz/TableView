@@ -10,10 +10,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,9 +25,8 @@ class TableViewCell: UITableViewCell {
     
     func setView() {
         self.contentView.backgroundColor = Colors.background
-        button1.backgroundColor = UIColor.red
-        button2.backgroundColor = UIColor.green
-        button3.backgroundColor = UIColor.blue
+        label.text = "Sample text"
+        label.textColor = Colors.main
     }
     
 }

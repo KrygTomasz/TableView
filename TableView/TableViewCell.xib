@@ -15,49 +15,31 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="409" height="227"/>
+                <rect key="frame" x="0.0" y="0.0" width="409" height="226"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Iy-Ma-2cc">
                         <rect key="frame" x="8" y="0.0" width="393" height="227"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-sd-voT">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="227"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RB5-5L-MqQ" userLabel="button1">
-                                        <rect key="frame" x="0.0" y="98.5" width="120.5" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFN-zb-u8U" userLabel="button2">
-                                        <rect key="frame" x="136.5" y="98.5" width="120" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-zX-WMR" userLabel="button3">
-                                        <rect key="frame" x="272.5" y="98.5" width="120.5" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="YMT-sd-voT" firstAttribute="centerY" secondItem="3Iy-Ma-2cc" secondAttribute="centerY" id="LSS-gA-cBd"/>
-                            <constraint firstItem="YMT-sd-voT" firstAttribute="width" secondItem="3Iy-Ma-2cc" secondAttribute="width" id="lyQ-Gd-PB1"/>
-                            <constraint firstItem="YMT-sd-voT" firstAttribute="height" secondItem="3Iy-Ma-2cc" secondAttribute="height" id="qnK-Sk-zyf"/>
-                            <constraint firstItem="YMT-sd-voT" firstAttribute="centerX" secondItem="3Iy-Ma-2cc" secondAttribute="centerX" id="zv8-J8-2g5"/>
-                        </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-Uk-bSL">
+                        <rect key="frame" x="8" y="103" width="393" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4Mu-Uk-bSL" firstAttribute="centerY" secondItem="3Iy-Ma-2cc" secondAttribute="centerY" id="57J-4H-LvY"/>
+                    <constraint firstItem="4Mu-Uk-bSL" firstAttribute="width" secondItem="3Iy-Ma-2cc" secondAttribute="width" id="RKm-mk-2kx"/>
                     <constraint firstItem="3Iy-Ma-2cc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="TTx-8e-XCw"/>
                     <constraint firstItem="3Iy-Ma-2cc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wq4-WQ-fUa"/>
+                    <constraint firstItem="4Mu-Uk-bSL" firstAttribute="centerX" secondItem="3Iy-Ma-2cc" secondAttribute="centerX" id="gFu-dg-CMJ"/>
                     <constraint firstAttribute="trailing" secondItem="3Iy-Ma-2cc" secondAttribute="trailing" constant="8" id="kju-Km-aSQ"/>
                     <constraint firstItem="3Iy-Ma-2cc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="r7b-89-sFQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="button1" destination="RB5-5L-MqQ" id="1gC-Wz-c3F"/>
-                <outlet property="button2" destination="eFN-zb-u8U" id="7Dg-T0-BEm"/>
-                <outlet property="button3" destination="ETJ-zX-WMR" id="ab7-Gt-djc"/>
+                <outlet property="label" destination="4Mu-Uk-bSL" id="hBt-u5-p17"/>
             </connections>
             <point key="canvasLocation" x="78.5" y="145.5"/>
         </tableViewCell>
