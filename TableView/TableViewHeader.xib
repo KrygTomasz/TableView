@@ -23,8 +23,14 @@
                     </view>
                     <blurEffect style="dark"/>
                 </visualEffectView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fao-a9-1ns">
+                    <rect key="frame" x="16" y="15" width="25" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-RB-QYf">
-                    <rect key="frame" x="16" y="0.0" width="291" height="60"/>
+                    <rect key="frame" x="16" y="0.0" width="42" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -40,19 +46,21 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="fao-a9-1ns" firstAttribute="leading" secondItem="YaH-Zs-4gz" secondAttribute="leading" constant="16" id="0fU-Ut-HTc"/>
                 <constraint firstItem="0XD-TW-kjk" firstAttribute="width" secondItem="YaH-Zs-4gz" secondAttribute="width" id="6pL-VX-qNu"/>
                 <constraint firstItem="oi5-RB-QYf" firstAttribute="height" secondItem="YaH-Zs-4gz" secondAttribute="height" id="A9Y-YT-g7s"/>
+                <constraint firstItem="oi5-RB-QYf" firstAttribute="centerY" secondItem="YaH-Zs-4gz" secondAttribute="centerY" id="C5D-LT-5oi"/>
                 <constraint firstItem="opI-MQ-QfP" firstAttribute="top" secondItem="YaH-Zs-4gz" secondAttribute="top" id="CGB-W8-6hd"/>
                 <constraint firstItem="0XD-TW-kjk" firstAttribute="centerX" secondItem="YaH-Zs-4gz" secondAttribute="centerX" id="MnD-Kw-Ddb"/>
                 <constraint firstItem="0XD-TW-kjk" firstAttribute="height" secondItem="YaH-Zs-4gz" secondAttribute="height" id="Pbb-qr-dnA"/>
                 <constraint firstItem="0XD-TW-kjk" firstAttribute="centerY" secondItem="YaH-Zs-4gz" secondAttribute="centerY" id="fJv-2z-meu"/>
-                <constraint firstItem="opI-MQ-QfP" firstAttribute="leading" secondItem="oi5-RB-QYf" secondAttribute="trailing" constant="8" id="kL0-zW-RzT"/>
-                <constraint firstItem="oi5-RB-QYf" firstAttribute="top" secondItem="YaH-Zs-4gz" secondAttribute="top" id="lZH-8R-nBj"/>
+                <constraint firstItem="fao-a9-1ns" firstAttribute="centerY" secondItem="YaH-Zs-4gz" secondAttribute="centerY" id="hm2-8Y-etO"/>
                 <constraint firstAttribute="trailing" secondItem="opI-MQ-QfP" secondAttribute="trailing" id="tLR-B1-3RY"/>
                 <constraint firstItem="oi5-RB-QYf" firstAttribute="leading" secondItem="YaH-Zs-4gz" secondAttribute="leading" constant="16" id="wfZ-WP-cdG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="editableLabelName" destination="fao-a9-1ns" id="Qyv-XW-HxQ"/>
                 <outlet property="expandButton" destination="opI-MQ-QfP" id="vku-2i-AOd"/>
                 <outlet property="labelName" destination="oi5-RB-QYf" id="YKJ-gK-ebs"/>
             </connections>
