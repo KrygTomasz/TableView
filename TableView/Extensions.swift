@@ -52,17 +52,3 @@ extension UIView {
     
 }
 
-
-extension UIBarButtonItem {
-    
-    class func itemWith(image: UIImage?, tintColor: UIColor?, target: AnyObject, action: Selector) -> UIBarButtonItem {
-        let button = UIButton(type: .custom)
-        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 40.0, height: 40.0)
-        button.addTarget(target, action: action, for: .touchUpInside)
-        
-        let barButtonItem = UIBarButtonItem(customView: button)
-        return barButtonItem
-    }
-    
-}

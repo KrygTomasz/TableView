@@ -8,5 +8,8 @@
 
 
 SAVE = "Save";
+CANCEL = "Cancel";
 ADD_HEADER_TITLE = "New section";
 ADD_HEADER_DESCRIPTION = "Type new section name";
+DELETE = "Delete";
+ADD_ROW = "Add row";

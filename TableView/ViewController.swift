@@ -64,13 +64,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setButton() {
 
-        let barButton = //UIBarButtonItem(image: #imageLiteral(resourceName: "add"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(headerButtonClick))
-            UIBarButtonItem.itemWith(image: #imageLiteral(resourceName: "add"), tintColor: Colors.main,target: self, action: #selector(headerButtonClick))
+        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonClick))
+        barButton.tintColor = Colors.main
         self.navigationItem.rightBarButtonItem = barButton
         
     }
     
-    func headerButtonClick() {
+    func barButtonClick() {
         
         showDialog()
         
@@ -81,13 +81,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alert = UIAlertController(title: Localized.addHeaderTitle.localize, message: Localized.addHeaderDescription.localize, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: nil)
-        let saveAction = UIAlertAction(title: NSLocalizedString(Localized.save.localize, comment: "string"), style: .default, handler: {(action: UIAlertAction) -> Void in
+        
+        
+        let cancelAction = UIAlertAction(title: Localized.cancel.localize, style: .default, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        
+        let saveAction = UIAlertAction(title: Localized.save.localize, style: .default, handler: {(action: UIAlertAction) -> Void in
             if let headerName: String = alert.textFields?.first?.text {
                 self.addSection(Section(headerName, numberOfRows: 3))
             }
         })
         
         alert.addAction(saveAction)
+        alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
         
@@ -203,10 +210,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        // Overrides StatusBar color
+        // Overrides StatusBar color.
         return .lightContent
     }
     
+    override var canBecomeFirstResponder: Bool {
+        // Makes keyboard hide at the same time as alert window.
+        return true
+    }
     
     
     //MARK: - tableView delegates
@@ -278,32 +289,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 60
     }
     
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if let footer = Bundle.main.loadNibNamed("TableViewFooter", owner: self, options: nil)?.first as? TableViewFooter {
-//            
-//            footer.setView()
-//            
-//            footer.onFooterButtonClicked = {
-//                
-//                self.sections[section].addRow(Row())
-//                self.tableView.reloadSections([section], with: .fade)
-//                
-//            }
-//            
-//            return footer
-//            
-//        } else {
-//            return UIView()
-//        }
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if sections[section].isExpanded {
-//            return 60
-//        } else {
-//            return 0
-//        }
-//    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let footer = Bundle.main.loadNibNamed("TableViewFooter", owner: self, options: nil)?.first as? TableViewFooter {
+            
+            footer.setView()
+            
+            footer.onFooterButtonClicked = {
+                
+                self.sections[section].addRow(Row(title: "a"))
+                self.tableView.reloadSections([section], with: .fade)
+                
+            }
+            
+            return footer
+            
+        } else {
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if sections[section].isExpanded {
+            return 60
+        } else {
+            return 0
+        }
+    }
     
     
     
@@ -312,19 +323,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .normal, title: "Delete", handler: {
+        let delete = UITableViewRowAction(style: .normal, title: Localized.delete.localize, handler: {
             action, index in
             self.sections[indexPath.section].rows.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .none)
+
         })
-        let edit = UITableViewRowAction(style: .normal, title: "Edit", handler: {
-            action, index in
-            self.sections[indexPath.section].rows.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        })
+//        let edit = UITableViewRowAction(style: .normal, title: Localized.edit.localize, handler: {
+//            action, index in
+//            self.sections[indexPath.section].rows.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .none)
+//        })
         delete.backgroundColor = UIColor.red
-        edit.backgroundColor = UIColor.blue
-        return [delete, edit]
+        return [delete]
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

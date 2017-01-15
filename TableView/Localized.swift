@@ -11,8 +11,11 @@ import Foundation
 enum Localized: String {
     
     case save = "SAVE"
+    case cancel = "CANCEL"
     case addHeaderTitle = "ADD_HEADER_TITLE"
     case addHeaderDescription = "ADD_HEADER_DESCRIPTION"
+    case delete = "DELETE"
+    case addRow = "ADD_ROW"
     
     var localize: String {
         

@@ -12,6 +12,7 @@ class TableViewFooter: UIView {
     
     @IBOutlet weak var addButton: UIButton!
     
+    
     var onFooterButtonClicked: (()->())!
     
     override func awakeFromNib() {
@@ -22,7 +23,8 @@ class TableViewFooter: UIView {
     func setView() {
 
         self.backgroundColor = UIColor.transparent(alpha: 0.5)
-        addButton.titleLabel?.text = "Add Row"
+        addButton.setTitle(Localized.addRow.localize, for: .normal)
+        addButton.tintColor = Colors.main
         addButton.addTarget(self, action: #selector(addButtonClick), for: .touchUpInside)
         
     }

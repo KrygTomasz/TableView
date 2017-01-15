@@ -8,5 +8,8 @@
 
 
 SAVE = "Zapisz";
+CANCEL = "Anuluj";
 ADD_HEADER_TITLE = "Nowa sekcja";
 ADD_HEADER_DESCRIPTION = "Podaj nazwę nowej sekcji";
+DELETE = "Usuń";
+ADD_ROW = "Dodaj rząd";
