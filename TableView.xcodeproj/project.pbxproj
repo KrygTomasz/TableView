@@ -16,6 +16,7 @@
 		2233E3BD1E0FD520003B36DB /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */; };
 		2263E2B31E2BC9DA00FC0111 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2263E2B51E2BC9DA00FC0111 /* Localizable.strings */; };
 		2263E2BE1E2BCE4900FC0111 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E2BD1E2BCE4900FC0111 /* Localized.swift */; };
+		2269FF951E367E8D005C8A92 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269FF941E367E8D005C8A92 /* EntityManager.swift */; };
 		228EE5141E2B00060045F0B8 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EE5131E2B00060045F0B8 /* Snapshot.swift */; };
 		229D022D1E16E78E001F12F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D022C1E16E78E001F12F9 /* Extensions.swift */; };
 		22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5FC1E0E8EB900CB287A /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		2263E2BA1E2BCB0600FC0111 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2263E2BB1E2BCB0600FC0111 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2263E2BD1E2BCE4900FC0111 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		2269FF941E367E8D005C8A92 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		228EE5131E2B00060045F0B8 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		229D022C1E16E78E001F12F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22EEC5F91E0E8EB900CB287A /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 			children = (
 				22048E281E2A8C4600396C97 /* Row.swift */,
 				22048E2A1E2A8C4F00396C97 /* Section.swift */,
+				2269FF941E367E8D005C8A92 /* EntityManager.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				229D022D1E16E78E001F12F9 /* Extensions.swift in Sources */,
 				22EEC6391E0EB53200CB287A /* TableViewCell.swift in Sources */,
 				2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */,
+				2269FF951E367E8D005C8A92 /* EntityManager.swift in Sources */,
 				22EEC6051E0E8EB900CB287A /* TableView.xcdatamodeld in Sources */,
 				22048E2B1E2A8C4F00396C97 /* Section.swift in Sources */,
 				22048E351E2A9FCE00396C97 /* TableViewFooter.swift in Sources */,
@@ -457,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -502,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -517,7 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = TableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.TableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = TableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.TableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
