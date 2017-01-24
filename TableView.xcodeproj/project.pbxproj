@@ -12,6 +12,7 @@
 		22048E331E2A9FBF00396C97 /* TableViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22048E321E2A9FBF00396C97 /* TableViewFooter.xib */; };
 		22048E351E2A9FCE00396C97 /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22048E341E2A9FCE00396C97 /* TableViewFooter.swift */; };
 		22048E371E2AA31400396C97 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22048E361E2AA31400396C97 /* Colors.swift */; };
+		2209A97F1E3742FC000A08D1 /* TableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A97E1E3742FC000A08D1 /* TableManager.swift */; };
 		2233E3BC1E0FD520003B36DB /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */; };
 		2233E3BD1E0FD520003B36DB /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */; };
 		2263E2B31E2BC9DA00FC0111 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2263E2B51E2BC9DA00FC0111 /* Localizable.strings */; };
@@ -54,6 +55,7 @@
 		22048E321E2A9FBF00396C97 /* TableViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewFooter.xib; sourceTree = "<group>"; };
 		22048E341E2A9FCE00396C97 /* TableViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
 		22048E361E2AA31400396C97 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2209A97E1E3742FC000A08D1 /* TableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
 		2233E3BA1E0FD520003B36DB /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		2233E3BB1E0FD520003B36DB /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
 		2263E2B01E2BC92700FC0111 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				22048E281E2A8C4600396C97 /* Row.swift */,
 				22048E2A1E2A8C4F00396C97 /* Section.swift */,
 				2269FF941E367E8D005C8A92 /* EntityManager.swift */,
+				2209A97E1E3742FC000A08D1 /* TableManager.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				22048E2B1E2A8C4F00396C97 /* Section.swift in Sources */,
 				22048E351E2A9FCE00396C97 /* TableViewFooter.swift in Sources */,
 				22048E291E2A8C4600396C97 /* Row.swift in Sources */,
+				2209A97F1E3742FC000A08D1 /* TableManager.swift in Sources */,
 				22EEC5FD1E0E8EB900CB287A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
