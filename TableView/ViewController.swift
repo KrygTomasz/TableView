@@ -105,6 +105,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     fileprivate func addSection(_ section: Section) {
         sections.append(section)
         tableView.reloadData()
+        TestSection.saveSection(name: section.name)
+        let fetchedObjects = EntityManager.fetch(from: "TestSection")
+        print(fetchedObjects.count)
     }
     
     func longPress(sender: UILongPressGestureRecognizer) {

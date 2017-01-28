@@ -18,8 +18,11 @@ class EntityManager {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         
         do {
-            let results = try context.execute(fetchRequest)
-            guard let fetchedObjects = results as? [NSManagedObject] else { return [] }
+            let results = try context.fetch(fetchRequest)
+            guard let fetchedObjects = results as? [NSManagedObject] else {
+                print("Fetch failed.")
+                return []
+            }
             return fetchedObjects
         } catch let error as NSError {
             print("Couldn't fetch objects due to \(error).")
