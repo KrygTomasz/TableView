@@ -17,11 +17,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var currentExpandedSection: Int? = nil
     
-    var sections = [
-        Section("Header 0", numberOfRows: 3),
-        Section("Header 1", numberOfRows: 5),
-        Section("Header 2", numberOfRows: 4),
-        Section("Header 3", numberOfRows: 2)
+    var sections: [Section] = [
+//        Section("Header 0", numberOfRows: 3),
+//        Section("Header 1", numberOfRows: 5),
+//        Section("Header 2", numberOfRows: 4),
+//        Section("Header 3", numberOfRows: 2)
     ]
     
     var longPressGesture: UILongPressGestureRecognizer!
@@ -30,17 +30,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchAll()
         setView()
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(sender: )))
         tableView.addGestureRecognizer(longPressGesture)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func fetchAll() {
+        
+        let fetchedSections = EntityManager.fetch(from: "TestSection")
+        for fetchedSection in fetchedSections {
+            guard let sectionName: String = fetchedSection.value(forKey: "name") as? String else { return }
+            
+            sections.append(Section(sectionName, numberOfRows: 3))
+        }
+        
+        
+    }
+    
     func setView() {
         setTableView()
         setNavigationBar()
         setTabBar()
-        setButton()
+        setButtons()
     }
     
     func setTableView() {
@@ -64,11 +77,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func setButton() {
+    func setButtons() {
 
-        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonClick))
-        barButton.tintColor = Colors.main
-        self.navigationItem.rightBarButtonItem = barButton
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonClick))
+        rightBarButton.tintColor = Colors.main
+        self.navigationItem.rightBarButtonItem = rightBarButton
         
     }
     

@@ -31,4 +31,13 @@ class EntityManager {
 
     }
     
+    static func remove(_ object: NSManagedObject, from entity: String) {
+        
+        guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        context.delete(object)
+        print("Object successfully deleted")
+        
+    }
+    
 }
