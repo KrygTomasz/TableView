@@ -25,6 +25,7 @@ class TableViewCell: UITableViewCell {
     
     func setView() {
         self.contentView.backgroundColor = Colors.background
+        self.backgroundColor = Colors.background
         label.text = "Sample text"
         label.textColor = Colors.main
     }
