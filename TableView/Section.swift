@@ -17,7 +17,7 @@ public class Section: NSManagedObject {
     @NSManaged public var isExpanded: Bool
     @NSManaged public var rows: NSSet?
     
-    static func saveSection(name: String) {
+    static func saveSection(name: String?) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         

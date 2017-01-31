@@ -34,11 +34,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func fetchAll() {
         
-        let fetchedSections = EntityManager.fetch(from: "Section")
+        guard let fetchedSections: [Section] = EntityManager.fetch(from: "Section") as? [Section] else { return }
         for fetchedSection in fetchedSections {
             guard let sectionName: String = fetchedSection.value(forKey: "name") as? String else { return }
+            guard let fetchedRows: [Row] = fetchedSection.rows?.allObjects as? [Row] else {
+                print("Fetching rows failed.")
+                return
+            }
             
-            sections.append(ABCSection(sectionName, numberOfRows: 3))
+            
+            
+            sections.append(ABCSection(sectionName, numberOfRows: fetchedRows.count))
+            
+            
         }
         
         
@@ -114,8 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         sections.append(section)
         tableView.reloadData()
         Section.saveSection(name: section.name)
-        let fetchedObjects = EntityManager.fetch(from: "Section")
-        print(fetchedObjects.count)
     }
     
     func longPress(sender: UILongPressGestureRecognizer) {
