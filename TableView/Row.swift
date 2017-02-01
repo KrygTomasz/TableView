@@ -2,19 +2,16 @@
 //  Row.swift
 //  TableView
 //
-//  Created by Kryg Tomasz on 14.01.2017.
+//  Created by Kryg Tomasz on 29.01.2017.
 //  Copyright © 2017 Kryg Tomek. All rights reserved.
 //
 
 import Foundation
-
+import CoreData
 
 class Row {
     
-    var labelText: String
-    
-    init(title: String) {
-        labelText = title
-    }
+    @NSManaged public var name: String?
+    @NSManaged public var section: Section?
     
 }

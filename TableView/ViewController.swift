@@ -17,12 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var currentExpandedSection: Int? = nil
     
-    var sections: [Section] = [
-//        Section("Header 0", numberOfRows: 3),
-//        Section("Header 1", numberOfRows: 5),
-//        Section("Header 2", numberOfRows: 4),
-//        Section("Header 3", numberOfRows: 2)
-    ]
+    var sections: [ABCSection] = []
     
     var longPressGesture: UILongPressGestureRecognizer!
     var sourceIndexPath: IndexPath? = nil
@@ -39,11 +34,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func fetchAll() {
         
-        let fetchedSections = EntityManager.fetch(from: "TestSection")
+        guard let fetchedSections: [Section] = EntityManager.fetch(from: "Section") as? [Section] else { return }
         for fetchedSection in fetchedSections {
             guard let sectionName: String = fetchedSection.value(forKey: "name") as? String else { return }
+            guard let fetchedRows: [Row] = fetchedSection.rows?.allObjects as? [Row] else {
+                print("Fetching rows failed.")
+                return
+            }
             
-            sections.append(Section(sectionName, numberOfRows: 3))
+            
+            
+            sections.append(ABCSection(sectionName, numberOfRows: fetchedRows.count))
         }
         
         
@@ -104,7 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let saveAction = UIAlertAction(title: Localized.save.localize, style: .default, handler: {(action: UIAlertAction) -> Void in
             if let headerName: String = alert.textFields?.first?.text {
-                self.addSection(Section(headerName, numberOfRows: 3))
+                self.addSection(ABCSection(headerName, numberOfRows: 3))
             }
         })
         
@@ -115,12 +116,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    fileprivate func addSection(_ section: Section) {
+    fileprivate func addSection(_ section: ABCSection) {
         sections.append(section)
         tableView.reloadData()
-        TestSection.saveSection(name: section.name)
-        let fetchedObjects = EntityManager.fetch(from: "TestSection")
-        print(fetchedObjects.count)
+        Section.saveSection(name: section.name)
     }
     
     func longPress(sender: UILongPressGestureRecognizer) {
@@ -176,7 +175,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (newIndexPath != nil && newIndexPath != sourceIndexPath) {
             if let section: Int = newIndexPath?.section, let newRowIndex: Int = newIndexPath?.row {
                 if let sourceRowIndex = sourceIndexPath?.row {
-                    let clickedRow: Row = sections[section].rows[sourceRowIndex]
+                    let clickedRow: ABCRow = sections[section].rows[sourceRowIndex]
                     sections[section].rows.remove(at: sourceRowIndex)
                     sections[section].rows.insert(clickedRow, at: newRowIndex)
                     guard let tempSourceIndexPath: IndexPath = sourceIndexPath else { return }
@@ -314,7 +313,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             footer.onFooterButtonClicked = {
                 
-                self.sections[section].addRow(Row(title: "a"))
+                self.sections[section].addRow(ABCRow(title: "a"))
                 self.tableView.reloadSections([section], with: .fade)
                 
             }
