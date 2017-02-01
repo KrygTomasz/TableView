@@ -45,8 +45,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
             sections.append(ABCSection(sectionName, numberOfRows: fetchedRows.count))
-            
-            
         }
         
         
